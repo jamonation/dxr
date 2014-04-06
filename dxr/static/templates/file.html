@@ -48,7 +48,15 @@
       </section>
     </div>
   {% endif %}
-
+  {% for line, annotations in lines %}
+    <div class="annotation-set" id="aset-{{ loop.index }}">
+      {%- for annotation in annotations -%}
+        <span class="{{ annotation.class }}"></span><span class="aset-title">{{annotation.title}}
+        <span class="aset-title-close" unselectable="on">X</span>
+      </span>
+      {%- endfor -%}
+    </div>
+  {%- endfor -%}
   <table id="file" class="file">
     <thead class="visually-hidden">
         <th scope="col">Annotations</th>
@@ -57,33 +65,22 @@
     </thead>
     <tbody>
       <tr>
-        <td id="annotations">
-          {% for line, annotations in lines %}
-            <div class="annotation-set" id="aset-{{ loop.index }}">
-              {%- for annotation in annotations -%}
-                <div {% for key, value in annotation.items() %}
-                      {{ key }}="{{ value }}"
-                     {% endfor %} ></div>
-              {%- endfor -%}
-            </div>
-          {%- endfor -%}
-        </td>
         <td id="line-numbers">
-          {% for line in lines %}
-            <span id="{{ loop.index }}" class="line-number" unselectable="on" rel="#{{ loop.index }}">{{ loop.index }}</span>
+          {% for line, annotations in lines %}
+          <span id="{{ loop.index }}" class="line-number" unselectable="on" rel="#{{ loop.index }}">{{ loop.index }} </span>
           {% endfor %}
         </td>
         <td class="code">
-<pre>
-{% for line, annotations in lines -%}
-<code id="line-{{ loop.index }}" aria-labelledby="{{ loop.index }}">{{ line }}</code>
-{% endfor -%}
-</pre>
+          <pre>
+            {% for line, annotations in lines -%}
+            <code id="line-{{ loop.index }}" aria-labelledby="{{ loop.index }}">{{ line }}</code>
+            {% endfor -%}
+          </pre>
         </td>
       </tr>
     </tbody>
   </table>
- </div>
+</div>
 {% endblock %}
 
 {% block site_js %}
@@ -91,4 +88,5 @@
   <script src="{{ wwwroot }}/static/js/panel.js"></script>
   <script src="{{ wwwroot }}/static/js/tree-selector.js"></script>
   <script src="{{ wwwroot }}/static/js/code-highlighter.js"></script>
+  <script src="{{ wwwroot }}/static/js/annotation-icons.js"></script>
 {% endblock %}

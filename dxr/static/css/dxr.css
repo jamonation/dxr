@@ -133,46 +133,86 @@ table td {
 td.code {
     padding: 0 0 0 .5em;
 }
-.annotation-set:after {
-    content: "\a0";  /* non-breaking space */
-}
-.note {
-    float: left;
-    height: 16px;
-    width: 16px;
-    margin-bottom: -1px;
-}
-.note-warning {
-    background-image: url('/static/icons/warning.png');
-}
 td#line-numbers {
     position: absolute;
     width: 95%;
-    z-index: 0;
+    z-index: 1;
+    background: white;
 }
 td#line-numbers span {
     display: block;
     cursor: pointer;
+    text-align: left;
+    width: 95%;
+    z-index: 1;
+    background: white; /* hide any annotation-set icons with a white overlay */
+    padding: 0 0 0 5px;
     -moz-user-select: none;
     -o-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    text-align: left;
-    padding: 0 0 0 5px;
 }
 td#line-numbers span.highlighted, span.multihighlight {
     background: none repeat scroll 0 0 rgb(255, 255, 204);
 }
+.note {
+    float: left;
+    height: 15px;
+    width: 16px;
+}
+.note-warning {
+    background: white url('/static/icons/warning.png') 0 0 no-repeat;
+}
+.aset-title {
+    border: 1px solid #AAAFFF;
+    display: inline;
+    left: 2em;
+    border-radius: 3px;
+    position: absolute;
+    padding: 0.25em 1em;
+    height: 2.25em;
+    background: #eeefff;
+    width: -moz-max-content;
+    top: 1.5em;
+    visibility: hidden;
+}
+.aset-title-close {
+    padding: 0px 0.4em;
+    position: relative;
+    margin: 0px;
+    border-radius: 3px;
+    font-weight: bold;
+    border-bottom: 1px double #999FFF;
+    color: #000FFF;
+    background: none repeat scroll 0% 0% #EFF;
+    left: 6px;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.annotation-set {
+    position: relative;
+    float: left;
+    display: inline;
+    clear: both;
+    cursor: pointer;    
+    z-index: 0;
+    height: 1.3em;
+    margin: 0px 0px 0px -16px;
+}
 td.code {
-    padding: 0 0 0 .5em;
     display: block;
     left: 30px;
+    top: -15px; /* for some reason this is needed or the lines are offset */
     margin: 0;
     padding: 0;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 td pre code {
     position: relative;
@@ -215,7 +255,6 @@ table.result_snippet tr,
     border-right: 1px solid #fff;
     color: #aaa;
     text-align: right;
-    width: 4%;
 }
 .result_snippet td {
     padding: .1rem .5rem;
@@ -418,7 +457,7 @@ mark {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: calc(100% - 150px);
-    z-index: 2;
+    z-index: 10;
 }
 .panel button{
     display: inline-block;
