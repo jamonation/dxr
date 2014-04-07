@@ -154,7 +154,7 @@ td#line-numbers span {
     -ms-user-select: none;
     user-select: none;
 }
-td#line-numbers span.highlighted, span.multihighlight {
+td#line-numbers span.highlighted, td#line-numbers span.multihighlight {
     background: none repeat scroll 0 0 rgb(255, 255, 204);
 }
 .note {
@@ -176,7 +176,7 @@ td#line-numbers span.highlighted, span.multihighlight {
     background: #eeefff;
     width: -moz-max-content;
     top: 1.5em;
-    visibility: hidden;
+    visibility: visible;
 }
 .aset-title-close {
     padding: 0px 0.4em;

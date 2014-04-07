@@ -2,9 +2,7 @@
 /* globals jQuery: true, $ */
 
 $(function() {
-
     'use strict';
-
     $('.annotation-set').hover(
         function() {
             // on mouse over
@@ -25,12 +23,9 @@ $(function() {
     $('.note').click(function() {
         var self = $(this);
         //clear all other annotations first
-        $('.aset-title').css('visibility', 'hidden');
         $('.aset-title').removeClass('visible');
         //make self visible
-        self.css('visibility', 'visible');
         self.parent().addClass('visible');
-        self.next().first().css('visibility', 'visible');
         //raise parent container annotation-set above code line numbers and code lines table
         //this ensures that code lines with multiple annotation icons are visible
         //without affecting the layout and flow of the adjacent code table
@@ -40,9 +35,8 @@ $(function() {
     $('.aset-title-close').click(function() {
         //hide a visible annotation message and put parent annotation-set under other elements again
         var self = $(this);
-        self.parent().css('visibility', 'hidden');
-        self.parent().parent().css('z-index', 0);
         self.parent().parent().removeClass('visible');
+        self.parent().parent().css('z-index', 0);
     });
 
 });
