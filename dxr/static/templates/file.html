@@ -67,14 +67,14 @@
       <tr>
         <td id="line-numbers">
           {% for line, annotations in lines %}
-          <span id="{{ loop.index }}" class="line-number" unselectable="on" rel="#{{ loop.index }}">{{ loop.index }} </span>
+          <span id="{{ loop.index }}" class="line-number" unselectable="on" rel="#{{ loop.index }}">{{ loop.index }}</span>
           {% endfor %}
         </td>
         <td class="code">
           <pre>
-            {% for line, annotations in lines -%}
-            <code id="line-{{ loop.index }}" aria-labelledby="{{ loop.index }}">{{ line }}</code>
-            {% endfor -%}
+{% for line, annotations in lines -%}
+<code id="line-{{ loop.index }}" aria-labelledby="{{ loop.index }}">{{ line }}</code>
+{% endfor -%}
           </pre>
         </td>
       </tr>
