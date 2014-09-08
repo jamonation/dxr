@@ -18,7 +18,6 @@ end
 CONF = _config
 MOUNT_POINT = '/home/vagrant/dxr'
 
-
 Vagrant::Config.run do |config|
     config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/trusty-server-cloudimg-amd64-juju-vagrant-disk1.box"
     config.vm.box = "ubuntu/trusty64"
